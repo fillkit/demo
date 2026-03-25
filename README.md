@@ -1,63 +1,50 @@
-# FillKit Demo
+<div align="center">
 
-Multi-framework demo hub for [FillKit](https://fillkit.dev) — context-aware form autofill for developers, QA, and demos.
+![FillKit](https://raw.githubusercontent.com/fillkit/sdk/main/media/logo-rect.svg)
 
-**Live:** [demo.fillkit.dev](https://demo.fillkit.dev)
+**Live demos — context-aware form autofill with realistic data**
 
-## Structure
+[![Live](https://img.shields.io/badge/Live-demo.fillkit.dev-blue)](https://demo.fillkit.dev)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/fillkit/sdk/blob/main/LICENSE)
 
+</div>
+
+---
+
+See FillKit in action across frameworks. Each demo shows context-aware form filling — checkout forms get valid card numbers with matching expiry and billing addresses, signup forms get real-looking names and emails, all generated instantly.
+
+**[Try it live at demo.fillkit.dev](https://demo.fillkit.dev)**
+
+<div align="center">
+
+<a href="https://chrome.google.com/webstore/detail/fillkit/"><img src="https://raw.githubusercontent.com/fillkit/sdk/main/media/chrome.svg" width="24" alt="Chrome">&nbsp;&nbsp;Chrome Extension</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://addons.mozilla.org/en-US/firefox/addon/fillkit/"><img src="https://raw.githubusercontent.com/fillkit/sdk/main/media/firefox.svg" width="24" alt="Firefox">&nbsp;&nbsp;Firefox Add-on</a>
+
+</div>
+
+## Demos
+
+| Framework | Stack | Link |
+| --------- | ----- | ---- |
+| HTML | Vanilla JS + `@fillkit/browser` | [demo.fillkit.dev](https://demo.fillkit.dev) |
+| React | React 19 + React Router 7 + Tailwind v4 | [demo.fillkit.dev/react](https://demo.fillkit.dev/react) |
+| Vue | Vue 3 + Vue Router + Tailwind v4 | [demo.fillkit.dev/vue](https://demo.fillkit.dev/vue) |
+| Angular | Angular 19 + Tailwind v4 | [demo.fillkit.dev/angular](https://demo.fillkit.dev/angular) |
+
+## Run locally
+
+```bash
+npm install
+npm run dev:react   # port 5173
+npm run dev:vue     # port 5174
+npm run dev:angular # port 4208
 ```
-demo/
-├── index.html          Hub landing page
-├── assets/             Shared logos and icons
-├── html/               Raw HTML demo pages (no build step)
-├── anywhere/           Browser extension landing page
-├── react/              React 19 + React Router 7 + Vite + Tailwind CSS v4
-├── vue/                Vue 3 + Vue Router + Vite + Tailwind CSS v4
-├── angular/            Angular 19 + Angular Router + Tailwind CSS v4
-├── scripts/            Build tooling (build-dist.js)
-├── .github/workflows/  GitHub Pages deploy action
-└── dist/               Production output (gitignored)
-```
 
-Each framework app is independent — it has its own `package.json`, dependencies, and build pipeline.
+## Links
 
-## Prerequisites
-
-- Node.js 20+
-- npm
-
-## Deployment
-
-Deployed automatically to **GitHub Pages** via `.github/workflows/deploy.yml` on every push to `main` that touches `demo/**`.
-
-## SDK Version Management
-
-The FillKit SDK is referenced in four places:
-
-| File | Package | Used by |
-|------|---------|---------|
-| `package.json` | `@fillkit/browser` | HTML demos (UMD/IIFE via `html/vendor/`) |
-| `react/package.json` | `@fillkit/core` | React demo |
-| `vue/package.json` | `@fillkit/core` | Vue demo |
-| `angular/package.json` | `@fillkit/core` | Angular demo |
-
-To bump the SDK version, update all four `package.json` files and re-run `npm install` in each directory.
-
-## Adding a New Demo Page
-
-### HTML
-
-1. Create a new `.html` file in `html/`
-2. Include `<script src="vendor/fillkit.umd.js"></script>` and initialize with `window.FillKit.FillKit.init({...})`
-3. The file is automatically picked up by `build-dist.js`
-
-### React / Vue / Angular
-
-1. Add a new route and page component in the framework's `src/` directory
-2. Follow the existing page patterns for FillKit integration
-3. The framework build output is automatically copied to `dist/<framework>/`
+- **SDK**: [@fillkit/core](https://www.npmjs.com/package/@fillkit/core) / [@fillkit/browser](https://www.npmjs.com/package/@fillkit/browser)
+- **Docs**: [fillkit.dev/docs](https://fillkit.dev/docs)
+- **Website**: [fillkit.dev](https://fillkit.dev)
 
 ## License
 
-[FillKit Source Available License](https://fillkit.dev/license)
+[MIT](https://github.com/fillkit/sdk/blob/main/LICENSE)

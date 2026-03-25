@@ -17,6 +17,6 @@
     "preview": "npx http-server dist -p 4005 -c-1 --gzip"
   },
   "dependencies": {
-    "@fillkit/browser": "1.0.2"
+    "@fillkit/browser": "2.0.0"
   }
 }
