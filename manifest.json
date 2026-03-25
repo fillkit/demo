@@ -1,0 +1,14 @@
+{
+  "name": "FillKit Demo Hub",
+  "short_name": "FillKit Demo",
+  "description": "Context-aware form autofill demos across React, Vue, Angular, and HTML",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9fafb",
+  "theme_color": "#0ea5e9",
+  "icons": [
+    { "src": "/assets/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/assets/logo.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

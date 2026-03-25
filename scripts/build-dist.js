@@ -36,7 +36,7 @@ mkdirSync(dist, { recursive: true });
 console.log('Assembling demo dist...\n');
 
 // --- Hub root files ---
-const rootFiles = ['index.html', 'favicon.svg', 'CNAME'];
+const rootFiles = ['index.html', 'favicon.svg', 'CNAME', 'manifest.json', 'sw.js'];
 for (const file of rootFiles) {
   const src = resolve(demoRoot, file);
   if (existsSync(src)) {

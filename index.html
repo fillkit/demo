@@ -6,6 +6,9 @@
     <title>FillKit Demo Hub - Form Autofill SDK Examples</title>
     <meta name="description" content="Explore FillKit's form autofill SDK across React, Vue, Angular, raw HTML, and browser extensions." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="apple-touch-icon" href="/assets/icon-192.png" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-gray-50 min-h-screen">
@@ -116,5 +119,10 @@
         </p>
       </footer>
     </div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+      }
+    </script>
   </body>
 </html>
