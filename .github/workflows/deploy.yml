@@ -3,8 +3,6 @@ name: Deploy Demo to GitHub Pages
 on:
   push:
     branches: [main]
-    paths:
-      - 'demo/**'
   workflow_dispatch:
 
 permissions:
@@ -30,33 +28,33 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       # Install hub dependencies (@fillkit/browser for HTML vendor UMD)
       - name: Install hub dependencies
-        run: cd demo && npm ci
+        run: npm ci
 
       # Install framework dependencies in parallel
       - name: Install framework dependencies
         run: |
-          cd demo/react && npm ci &
-          cd demo/vue && npm ci &
-          cd demo/angular && npm ci &
+          cd react && npm ci &
+          cd vue && npm ci &
+          cd angular && npm ci &
           wait
 
       # Build all framework apps
       - name: Build React
-        run: cd demo/react && npm run build
+        run: cd react && npm run build
 
       - name: Build Vue
-        run: cd demo/vue && npm run build
+        run: cd vue && npm run build
 
       - name: Build Angular
-        run: cd demo/angular && npm run build
+        run: cd angular && npm run build
 
       # Assemble into unified dist/ (copies @fillkit/browser UMD into html/vendor/)
       - name: Assemble dist
-        run: cd demo && node scripts/build-dist.js
+        run: node scripts/build-dist.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -64,7 +62,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: demo/dist
+          path: dist
 
       - name: Deploy to GitHub Pages
         id: deployment
