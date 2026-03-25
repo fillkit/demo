@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catholic Catechesis Registration - FillKit Demo">
+    <title>Catechesis Registration - FillKit Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      #root {
+        height: 100vh;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="h-screen bg-gray-50 flex flex-col overflow-hidden">
+      <!-- Top Nav -->
+      <header class="border-b border-gray-200 bg-white shrink-0 relative">
+        <div class="h-12 flex items-center justify-between px-4 max-w-screen-xl mx-auto">
+          <a href="/" class="flex items-center gap-2 shrink-0">
+            <img src="/assets/logo-rect.svg" alt="FillKit" class="h-6" />
+          </a>
+          <nav class="hidden sm:flex items-center gap-1">
+            <a href="/react/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">React</a>
+            <a href="/vue/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">Vue</a>
+            <a href="/angular/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">Angular</a>
+            <a href="/html/" class="px-3 py-1.5 text-sm rounded-md bg-gray-100 text-gray-900 font-medium transition-colors whitespace-nowrap">HTML</a>
+            <a href="/anywhere/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">Extension</a>
+          </nav>
+          <button class="sm:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')" aria-label="Toggle navigation">
+            <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
+        </div>
+        <div id="mobile-nav" class="hidden sm:hidden border-t border-gray-100 bg-white">
+          <nav class="flex flex-col py-2 px-4">
+            <a href="/react/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">React</a>
+            <a href="/vue/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">Vue</a>
+            <a href="/angular/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">Angular</a>
+            <a href="/html/" class="px-3 py-2 text-sm rounded-md bg-gray-100 text-gray-900 font-medium transition-colors">HTML</a>
+            <a href="/anywhere/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">Extension</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Demo links bar -->
+      <div class="bg-white border-b border-gray-200 px-4 py-2 shrink-0">
+        <div class="max-w-screen-xl mx-auto flex items-center gap-2 text-sm overflow-x-auto">
+          <span class="text-gray-500 shrink-0">HTML Demos:</span>
+          <a href="raw-html-test.html" class="px-2 py-1 rounded text-gray-600 hover:bg-gray-100 whitespace-nowrap">HTML Test</a>
+          <a href="philosophy-exam.html" class="px-2 py-1 rounded text-gray-600 hover:bg-gray-100 whitespace-nowrap">Philosophy Exam</a>
+          <a href="catechesis-registration.html" class="px-2 py-1 rounded text-blue-600 bg-blue-50 font-medium whitespace-nowrap">Catechesis</a>
+          <a href="saas-survey.html" class="px-2 py-1 rounded text-gray-600 hover:bg-gray-100 whitespace-nowrap">SaaS Survey</a>
+        </div>
+      </div>
+
+      <!-- Main Content Area -->
+      <main class="flex-1 overflow-y-auto">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div class="mb-6 space-y-3">
+            <div class="flex items-center gap-4 text-sm">
+              <a href="https://github.com/fillkit/demo/blob/main/html/catechesis-registration.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-gray-600 hover:text-gray-900 transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                View source on GitHub
+              </a>
+            </div>
+            <div class="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-sm text-amber-800">
+              <strong>Note:</strong> This demo uses the embedded FillKit SDK integrated directly into the code.
+              The recommended way to use FillKit is via the
+              <a href="/anywhere/" class="font-medium underline underline-offset-2 hover:text-amber-900">free browser extension</a>
+              &mdash; no codebase changes needed, works on any website, even ones you don't own.
+            </div>
+          </div>
+          <h1 class="mb-8 text-gray-800 text-3xl font-bold">✝️ Catholic Catechesis Program Registration</h1>
+
+          <div class="bg-blue-50 p-6 rounded-lg border border-blue-300 mb-8">
+            <h3 class="mb-4 text-lg font-semibold text-blue-800">Program Information</h3>
+            <p class="text-blue-900 mb-2"><strong>Program:</strong> Adult Catechesis - Rite of Christian Initiation of
+              Adults (RCIA)</p>
+            <p class="text-blue-900 mb-2"><strong>Duration:</strong> September 2024 - Easter 2025</p>
+            <p class="text-blue-900"><strong>Location:</strong> St. Mary's Parish, Parish Hall</p>
+          </div>
+
+          <form id="catechesis-registration-form" name="catechesisRegistration" action="/catechesis-register"
+            method="POST" class="bg-white p-8 rounded-lg shadow-md">
+            <!-- Participant Information Section -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">Participant Information</h2>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="cat-firstname" class="block text-sm font-medium text-gray-700 mb-2">
+                    First Name <span class="text-red-500">*</span>
+                  </label>
+                  <input type="text" id="cat-firstname" name="firstName"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="John" required>
+                </div>
+                <div>
+                  <label for="cat-lastname" class="block text-sm font-medium text-gray-700 mb-2">
+                    Last Name <span class="text-red-500">*</span>
+                  </label>
+                  <input type="text" id="cat-lastname" name="lastName"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Smith" required>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="cat-email" class="block text-sm font-medium text-gray-700 mb-2">
+                    Email Address <span class="text-red-500">*</span>
+                  </label>
+                  <input type="email" id="cat-email" name="email"
+                    class="no-fk w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="john.smith@email.com" required>
+                </div>
+                <div>
+                  <label for="cat-phone" class="block text-sm font-medium text-gray-700 mb-2">
+                    Phone Number <span class="text-red-500">*</span>
+                  </label>
+                  <input type="tel" id="cat-phone" name="phone"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="+1 (555) 123-4567" required>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="cat-birthdate" class="block text-sm font-medium text-gray-700 mb-2">
+                    Date of Birth <span class="text-red-500">*</span>
+                  </label>
+                  <input type="date" id="cat-birthdate" name="birthDate"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    required>
+                </div>
+                <div>
+                  <label for="cat-baptism-date" class="block text-sm font-medium text-gray-700 mb-2">
+                    Baptism Date (if applicable)
+                  </label>
+                  <input type="date" id="cat-baptism-date" name="baptismDate"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label for="cat-address" class="block text-sm font-medium text-gray-700 mb-2">
+                  Street Address <span class="text-red-500">*</span>
+                </label>
+                <input type="text" id="cat-address" name="address"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="123 Main Street" required>
+              </div>
+
+
+              <!-- add a password fields here -->
+              <div class="mb-6">
+                <label for="cat-password" class="block text-sm font-medium text-gray-700 mb-2">
+                  Password <span class="text-red-500">*</span>
+                </label>
+                <input type="password" id="cat-password" name="password"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Enter your password" required>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div>
+                  <label for="cat-city" class="block text-sm font-medium text-gray-700 mb-2">
+                    City <span class="text-red-500">*</span>
+                  </label>
+                  <input type="text" id="cat-city" name="city"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Chicago" required>
+                </div>
+                <div>
+                  <label for="cat-state" class="block text-sm font-medium text-gray-700 mb-2">
+                    State <span class="text-red-500">*</span>
+                  </label>
+                  <input type="text" id="cat-state" name="state"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="IL" required>
+                </div>
+                <div>
+                  <label for="cat-zip" class="block text-sm font-medium text-gray-700 mb-2">
+                    ZIP Code <span class="text-red-500">*</span>
+                  </label>
+                  <input type="text" id="cat-zip" name="zipCode"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="60601" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Spiritual Journey Section -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">Spiritual Journey</h2>
+
+              <div class="mb-6">
+                <label for="cat-program-type" class="block text-sm font-medium text-gray-700 mb-2">
+                  Program Type <span class="text-red-500">*</span>
+                </label>
+                <select id="cat-program-type" name="programType"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  required>
+                  <option value="">-- Select program type --</option>
+                  <option value="rcia">RCIA - Rite of Christian Initiation of Adults (For those seeking Baptism or full
+                    communion)</option>
+                  <option value="returning-catholic">Returning Catholic Program</option>
+                  <option value="confirmation">Adult Confirmation Preparation</option>
+                  <option value="catechumenate">Catechumenate (Already baptized, preparing for Eucharist/Confirmation)
+                  </option>
+                </select>
+              </div>
+
+              <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-4">
+                  Current Faith Background <span class="text-red-500">*</span>
+                </label>
+                <div class="space-y-2">
+                  <label class="flex items-center">
+                    <input type="radio" name="faithBackground" value="non-christian" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">Not baptized / No Christian background</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="radio" name="faithBackground" value="baptized-catholic" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">Baptized Catholic (seeking full initiation)</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="radio" name="faithBackground" value="baptized-other" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">Baptized in another Christian denomination</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="radio" name="faithBackground" value="lapsed-catholic" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">Lapsed Catholic (returning to the Church)</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="radio" name="faithBackground" value="other" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">Other</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label for="cat-spiritual-journey" class="block text-sm font-medium text-gray-700 mb-2">
+                  What brings you to this program? <span class="text-red-500">*</span>
+                </label>
+                <textarea id="cat-spiritual-journey" name="spiritualJourney" rows="4"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Please share what led you to consider joining the Catholic Church or returning to active practice..."
+                  required></textarea>
+              </div>
+
+              <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-4">
+                  Have you attended any previous catechesis or religious education programs?
+                </label>
+                <div class="space-y-2">
+                  <label class="flex items-center">
+                    <input type="radio" name="previousPrograms" value="yes" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">Yes</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="radio" name="previousPrograms" value="no" checked class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label for="cat-previous-experience" class="block text-sm font-medium text-gray-700 mb-2">
+                  If yes, please describe:
+                </label>
+                <textarea id="cat-previous-experience" name="previousExperience" rows="3"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Describe any previous religious education, Bible study, or spiritual formation experiences"></textarea>
+              </div>
+            </div>
+
+            <!-- Sponsor/Godparent Section -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">Sponsor/Godparent Information</h2>
+
+              <div class="mb-6">
+                <label class="flex items-center mb-4">
+                  <input type="checkbox" name="hasSponsor" value="yes" class="mr-3 w-5 h-5">
+                  <span class="text-gray-700">I have identified a sponsor/godparent</span>
+                </label>
+
+                <div id="sponsor-details" class="hidden space-y-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label for="sponsor-name" class="block text-sm font-medium text-gray-700 mb-2">
+                        Sponsor/Godparent Name
+                      </label>
+                      <input type="text" id="sponsor-name" name="sponsorName"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="Mary Johnson">
+                    </div>
+                    <div>
+                      <label for="sponsor-phone" class="block text-sm font-medium text-gray-700 mb-2">
+                        Sponsor Phone
+                      </label>
+                      <input type="tel" id="sponsor-phone" name="sponsorPhone"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder="+1 (555) 987-6543">
+                    </div>
+                  </div>
+                  <div>
+                    <label for="sponsor-relationship" class="block text-sm font-medium text-gray-700 mb-2">
+                      Relationship to Sponsor
+                    </label>
+                    <input type="text" id="sponsor-relationship" name="sponsorRelationship"
+                      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="Friend, Family member, etc.">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Emergency Contact Section -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">Emergency Contact</h2>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="emergency-name" class="block text-sm font-medium text-gray-700 mb-2">
+                    Emergency Contact Name <span class="text-red-500">*</span>
+                  </label>
+                  <input type="text" id="emergency-name" name="emergencyName"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Jane Doe" required>
+                </div>
+                <div>
+                  <label for="emergency-phone" class="block text-sm font-medium text-gray-700 mb-2">
+                    Emergency Contact Phone <span class="text-red-500">*</span>
+                  </label>
+                  <input type="tel" id="emergency-phone" name="emergencyPhone"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="+1 (555) 123-4567" required>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label for="emergency-relationship" class="block text-sm font-medium text-gray-700 mb-2">
+                  Relationship <span class="text-red-500">*</span>
+                </label>
+                <input type="text" id="emergency-relationship" name="emergencyRelationship"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Spouse, Parent, Friend, etc." required>
+              </div>
+            </div>
+
+            <!-- Special Needs Section -->
+            <div class="mb-8">
+              <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">Special Needs or Accommodations</h2>
+
+              <div class="mb-6">
+                <label for="special-needs" class="block text-sm font-medium text-gray-700 mb-2">
+                  Please let us know if you have any special needs or require accommodations:
+                </label>
+                <textarea id="special-needs" name="specialNeeds" rows="3"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Any accessibility needs, dietary restrictions, language preferences, etc."></textarea>
+              </div>
+            </div>
+
+            <!-- Agreement Section -->
+            <div class="mb-8">
+              <div class="bg-yellow-50 border border-yellow-300 rounded-lg p-4 mb-6">
+                <label class="flex items-start">
+                  <input type="checkbox" name="commitment" value="accepted" required class="mr-3 mt-1 w-5 h-5">
+                  <span class="text-gray-700">
+                    I commit to regular attendance at weekly sessions and the liturgical rites. I understand this is a
+                    journey that requires dedication and active participation. <span class="text-red-500">*</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="mb-6">
+                <label class="flex items-start">
+                  <input type="checkbox" name="permission" value="accepted" required class="mr-3 mt-1 w-5 h-5">
+                  <span class="text-gray-700">
+                    I give permission for photos to be taken during sessions (optional for parish bulletin and website).
+                    <span class="text-red-500">*</span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="mb-6">
+                <label class="flex items-start">
+                  <input type="checkbox" name="privacyConsent" value="accepted" required class="mr-3 mt-1 w-5 h-5">
+                  <span class="text-gray-700">
+                    I consent to the processing of my personal information for program administration purposes. <span
+                      class="text-red-500">*</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg">
+              Submit Registration
+            </button>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <!-- Load FillKit SDK from browser build -->
+    <script src="vendor/fillkit.umd.js"></script>
+
+    <script>
+      // Initialize FillKit
+      if (window.FillKit && window.FillKit.FillKit) {
+        window.FillKit.FillKit.init({
+          mode: 'valid',
+          watchMode: true,
+          refill: true,
+          locale: 'zh_CN',
+          autofill: {
+            excludeSelectors: [".no-fk"],
+            overrides: {
+              city: "Cotonou",
+              password: "Password@123",
+              "input[type='tel']": "+2290166475981",
+            }
+          },
+          ui: {
+            enabled: true,
+            position: 'bottom.center',
+            theme: {
+              primaryColor: '#3b82f6',
+              appearance: 'auto',
+            },
+          },
+        });
+      }
+
+      // Toggle sponsor details
+      document.querySelector('input[name="hasSponsor"]').addEventListener('change', function (e) {
+        const details = document.getElementById('sponsor-details');
+        if (e.target.checked) {
+          details.classList.remove('hidden');
+        } else {
+          details.classList.add('hidden');
+        }
+      });
+
+      // Prevent form submission
+      document.getElementById('catechesis-registration-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert('Form would submit. Check console for filled values.');
+
+        const formData = new FormData(this);
+        const data = {};
+        for (const [key, value] of formData.entries()) {
+          if (data[key]) {
+            if (Array.isArray(data[key])) {
+              data[key].push(value);
+            } else {
+              data[key] = [data[key], value];
+            }
+          } else {
+            data[key] = value;
+          }
+        }
+        console.log('[Catechesis Registration Form] Data:', data);
+      });
+    </script>
+  </body>
+
+</html>

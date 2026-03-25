@@ -1,0 +1,126 @@
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { FillKit } from '@fillkit/core';
+import { FillKitService } from '../services/fillkit.service';
+
+interface LocaleEntry {
+  readonly code: string;
+  readonly label: string;
+}
+
+const LOCALES: readonly LocaleEntry[] = [
+  { code: 'af_ZA', label: 'Afrikaans' },
+  { code: 'ar', label: 'Arabic' },
+  { code: 'az', label: 'Azerbaijani' },
+  { code: 'bn_BD', label: 'Bengali' },
+  { code: 'zh_CN', label: 'Chinese (Simplified)' },
+  { code: 'zh_TW', label: 'Chinese (Traditional)' },
+  { code: 'hr', label: 'Croatian' },
+  { code: 'cs_CZ', label: 'Czech' },
+  { code: 'cy', label: 'Welsh' },
+  { code: 'da', label: 'Danish' },
+  { code: 'dv', label: 'Dhivehi' },
+  { code: 'nl', label: 'Dutch' },
+  { code: 'en', label: 'English' },
+  { code: 'eo', label: 'Esperanto' },
+  { code: 'fi', label: 'Finnish' },
+  { code: 'fr', label: 'French' },
+  { code: 'ka_GE', label: 'Georgian' },
+  { code: 'de', label: 'German' },
+  { code: 'el', label: 'Greek' },
+  { code: 'he', label: 'Hebrew' },
+  { code: 'hu', label: 'Hungarian' },
+  { code: 'hy', label: 'Armenian' },
+  { code: 'id_ID', label: 'Indonesian' },
+  { code: 'it', label: 'Italian' },
+  { code: 'ja', label: 'Japanese' },
+  { code: 'ko', label: 'Korean' },
+  { code: 'ku_ckb', label: 'Kurdish (Sorani)' },
+  { code: 'ku_kmr_latin', label: 'Kurdish (Kurmanji)' },
+  { code: 'lv', label: 'Latvian' },
+  { code: 'mk', label: 'Macedonian' },
+  { code: 'nb_NO', label: 'Norwegian' },
+  { code: 'ne', label: 'Nepali' },
+  { code: 'fa', label: 'Persian' },
+  { code: 'pl', label: 'Polish' },
+  { code: 'pt_BR', label: 'Portuguese (Brazil)' },
+  { code: 'pt_PT', label: 'Portuguese (Portugal)' },
+  { code: 'ro', label: 'Romanian' },
+  { code: 'ru', label: 'Russian' },
+  { code: 'sr_RS_latin', label: 'Serbian' },
+  { code: 'sk', label: 'Slovak' },
+  { code: 'sl_SI', label: 'Slovenian' },
+  { code: 'es', label: 'Spanish' },
+  { code: 'sv', label: 'Swedish' },
+  { code: 'ta_IN', label: 'Tamil' },
+  { code: 'th', label: 'Thai' },
+  { code: 'tr', label: 'Turkish' },
+  { code: 'uk', label: 'Ukrainian' },
+  { code: 'ur', label: 'Urdu' },
+  { code: 'uz_UZ_latin', label: 'Uzbek' },
+  { code: 'vi', label: 'Vietnamese' },
+  { code: 'yo_NG', label: 'Yoruba' },
+  { code: 'zu_ZA', label: 'Zulu' },
+] as const;
+
+@Component({
+  selector: 'app-sidebar',
+  standalone: true,
+  imports: [CommonModule, RouterModule, FormsModule],
+  templateUrl: './sidebar.component.html',
+})
+export class SidebarComponent implements OnInit, OnDestroy {
+  @Input() collapsed = false;
+  @Output() toggleCollapsed = new EventEmitter<void>();
+
+  locales = LOCALES;
+  locale = 'en';
+  mode: 'valid' | 'invalid' = 'valid';
+
+  private unsubscribe: (() => void) | null = null;
+
+  constructor(private fillKitService: FillKitService) {}
+
+  ngOnInit(): void {
+    try {
+      const store = FillKit.atoms.sdkOptions;
+      const current = store.get();
+      this.locale = current.locale;
+      this.mode = current.mode;
+
+      this.unsubscribe = store.subscribe((state) => {
+        this.locale = state.locale;
+        this.mode = state.mode;
+      });
+    } catch {
+      // FillKit may not be initialized yet; defaults are fine
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe?.();
+  }
+
+  onToggle(): void {
+    this.toggleCollapsed.emit();
+  }
+
+  onLocaleChange(newLocale: string): void {
+    this.locale = newLocale;
+    this.fillKitService.instance?.updateOptions({ locale: newLocale });
+  }
+
+  onModeChange(newMode: 'valid' | 'invalid'): void {
+    this.mode = newMode;
+    this.fillKitService.instance?.updateOptions({ mode: newMode });
+  }
+}

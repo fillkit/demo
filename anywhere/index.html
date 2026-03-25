@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FillKit Browser Extension - Chrome &amp; Firefox Autofill</title>
+    <meta name="description" content="FillKit browser extensions for Chrome (MV3) and Firefox. One-click form autofill on any website." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Top Nav -->
+    <header class="border-b border-gray-200 bg-white shrink-0 relative">
+      <div class="h-12 flex items-center justify-between px-4 max-w-screen-xl mx-auto">
+        <a href="/" class="flex items-center gap-2 shrink-0">
+          <img src="/assets/logo-rect.svg" alt="FillKit" class="h-6" />
+        </a>
+        <nav class="hidden sm:flex items-center gap-1">
+          <a href="/react/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">React</a>
+          <a href="/vue/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">Vue</a>
+          <a href="/angular/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">Angular</a>
+          <a href="/html/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">HTML</a>
+          <a href="/anywhere/" class="px-3 py-1.5 text-sm rounded-md bg-gray-100 text-gray-900 font-medium transition-colors whitespace-nowrap">Extension</a>
+        </nav>
+        <button class="sm:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')" aria-label="Toggle navigation">
+          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+      </div>
+      <div id="mobile-nav" class="hidden sm:hidden border-t border-gray-100 bg-white">
+        <nav class="flex flex-col py-2 px-4">
+          <a href="/react/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">React</a>
+          <a href="/vue/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">Vue</a>
+          <a href="/angular/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">Angular</a>
+          <a href="/html/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">HTML</a>
+          <a href="/anywhere/" class="px-3 py-2 text-sm rounded-md bg-gray-100 text-gray-900 font-medium transition-colors">Extension</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="flex-1">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Browser Extension</h1>
+        <p class="text-lg text-gray-600 mb-8">
+          FillKit ships browser extensions for
+          <strong>Chrome (Manifest V3)</strong> and <strong>Firefox</strong>,
+          bringing context-aware form autofill to every website you visit.
+          The extensions share the same core engine as the SDK but run entirely
+          inside the browser &mdash; no server calls required for basic usage.
+        </p>
+
+        <!-- Features -->
+        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-8">
+          <h2 class="text-xl font-semibold text-gray-900 mb-4">Features</h2>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 flex-shrink-0 h-5 w-5 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold">1</span>
+              <div>
+                <span class="font-medium text-gray-900">One-click autofill</span>
+                <span class="text-gray-600"> &mdash; Click the extension icon or press the keyboard shortcut and every visible form is filled instantly.</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 flex-shrink-0 h-5 w-5 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold">2</span>
+              <div>
+                <span class="font-medium text-gray-900">Works on any website</span>
+                <span class="text-gray-600"> &mdash; No integration needed. The extension detects forms, identifies field types, and generates realistic data on the fly.</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 flex-shrink-0 h-5 w-5 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold">3</span>
+              <div>
+                <span class="font-medium text-gray-900">Locale &amp; mode switching</span>
+                <span class="text-gray-600"> &mdash; Toggle between 50+ locales and switch between valid or invalid fill modes directly from the popup.</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-0.5 flex-shrink-0 h-5 w-5 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold">4</span>
+              <div>
+                <span class="font-medium text-gray-900">No account required</span>
+                <span class="text-gray-600"> &mdash; Basic autofill works entirely offline. Sign in with a FillKit token to unlock cloud datasets and team profiles.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Store Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+          <div class="relative bg-white p-6 rounded-lg border border-gray-200">
+            <span class="absolute top-3 right-3 inline-flex items-center rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-800">Coming Soon</span>
+            <div class="flex items-center gap-3 mb-3">
+              <img src="/assets/chrome.svg" alt="Chrome" class="h-10 w-10" />
+              <h3 class="text-lg font-semibold text-gray-900">Chrome Web Store</h3>
+            </div>
+            <p class="text-sm text-gray-600">Chrome extension built on Manifest V3 with service worker architecture for reliable background processing.</p>
+          </div>
+
+          <div class="relative bg-white p-6 rounded-lg border border-gray-200">
+            <span class="absolute top-3 right-3 inline-flex items-center rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-800">Coming Soon</span>
+            <div class="flex items-center gap-3 mb-3">
+              <img src="/assets/firefox.svg" alt="Firefox" class="h-10 w-10" />
+              <h3 class="text-lg font-semibold text-gray-900">Firefox Add-ons</h3>
+            </div>
+            <p class="text-sm text-gray-600">Firefox extension with the same feature set, built for compatibility with Firefox's WebExtensions API.</p>
+          </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="bg-white rounded-lg border border-gray-200 p-6 mb-10">
+          <h2 class="text-xl font-semibold text-gray-900 mb-5">How It Works</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="text-center">
+              <div class="mx-auto h-10 w-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-sm font-bold mb-2">1</div>
+              <h3 class="font-medium text-gray-900 text-sm mb-1">Install</h3>
+              <p class="text-xs text-gray-500">Add the extension from the Chrome Web Store or Firefox Add-ons.</p>
+            </div>
+            <div class="text-center">
+              <div class="mx-auto h-10 w-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-sm font-bold mb-2">2</div>
+              <h3 class="font-medium text-gray-900 text-sm mb-1">Navigate</h3>
+              <p class="text-xs text-gray-500">Go to any website with a form &mdash; sign-up pages, checkout flows, surveys.</p>
+            </div>
+            <div class="text-center">
+              <div class="mx-auto h-10 w-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-sm font-bold mb-2">3</div>
+              <h3 class="font-medium text-gray-900 text-sm mb-1">Click</h3>
+              <p class="text-xs text-gray-500">Click the FillKit icon in the toolbar or use the keyboard shortcut.</p>
+            </div>
+            <div class="text-center">
+              <div class="mx-auto h-10 w-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-sm font-bold mb-2">4</div>
+              <h3 class="font-medium text-gray-900 text-sm mb-1">Done</h3>
+              <p class="text-xs text-gray-500">Every detected form field is filled with realistic, context-aware data.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-200 py-6 text-center text-sm text-gray-500">
+      <p>
+        Open source by
+        <a href="https://github.com/Dahkenangnon" class="text-blue-600 hover:text-blue-800">Justin Dah-kenangnon</a>
+      </p>
+    </footer>
+  </body>
+</html>

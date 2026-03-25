@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+      content="Raw HTML test page for FillKit SDK - Testing browser build with vanilla HTML forms">
+    <meta property="og:description" content="Comprehensive form testing for FillKit autofill capabilities">
+    <title>FillKit Raw HTML Test - Browser Build</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      #root {
+        height: 100vh;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="h-screen bg-gray-50 flex flex-col overflow-hidden">
+      <!-- Top Nav -->
+      <header class="border-b border-gray-200 bg-white shrink-0 relative">
+        <div class="h-12 flex items-center justify-between px-4 max-w-screen-xl mx-auto">
+          <a href="/" class="flex items-center gap-2 shrink-0">
+            <img src="/assets/logo-rect.svg" alt="FillKit" class="h-6" />
+          </a>
+          <nav class="hidden sm:flex items-center gap-1">
+            <a href="/react/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">React</a>
+            <a href="/vue/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">Vue</a>
+            <a href="/angular/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">Angular</a>
+            <a href="/html/" class="px-3 py-1.5 text-sm rounded-md bg-gray-100 text-gray-900 font-medium transition-colors whitespace-nowrap">HTML</a>
+            <a href="/anywhere/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">Extension</a>
+          </nav>
+          <button class="sm:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')" aria-label="Toggle navigation">
+            <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          </button>
+        </div>
+        <div id="mobile-nav" class="hidden sm:hidden border-t border-gray-100 bg-white">
+          <nav class="flex flex-col py-2 px-4">
+            <a href="/react/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">React</a>
+            <a href="/vue/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">Vue</a>
+            <a href="/angular/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">Angular</a>
+            <a href="/html/" class="px-3 py-2 text-sm rounded-md bg-gray-100 text-gray-900 font-medium transition-colors">HTML</a>
+            <a href="/anywhere/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">Extension</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Demo links bar -->
+      <div class="bg-white border-b border-gray-200 px-4 py-2 shrink-0">
+        <div class="max-w-screen-xl mx-auto flex items-center gap-2 text-sm overflow-x-auto">
+          <span class="text-gray-500 shrink-0">HTML Demos:</span>
+          <a href="raw-html-test.html" class="px-2 py-1 rounded text-blue-600 bg-blue-50 font-medium whitespace-nowrap">HTML Test</a>
+          <a href="philosophy-exam.html" class="px-2 py-1 rounded text-gray-600 hover:bg-gray-100 whitespace-nowrap">Philosophy Exam</a>
+          <a href="catechesis-registration.html" class="px-2 py-1 rounded text-gray-600 hover:bg-gray-100 whitespace-nowrap">Catechesis</a>
+          <a href="saas-survey.html" class="px-2 py-1 rounded text-gray-600 hover:bg-gray-100 whitespace-nowrap">SaaS Survey</a>
+        </div>
+      </div>
+
+      <div class="flex flex-1 overflow-hidden">
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto h-full">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div class="mb-6 space-y-3">
+            <div class="flex items-center gap-4 text-sm">
+              <a href="https://github.com/fillkit/demo/blob/main/html/raw-html-test.html" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-gray-600 hover:text-gray-900 transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                View source on GitHub
+              </a>
+            </div>
+            <div class="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 text-sm text-amber-800">
+              <strong>Note:</strong> This demo uses the embedded FillKit SDK integrated directly into the code.
+              The recommended way to use FillKit is via the
+              <a href="/anywhere/" class="font-medium underline underline-offset-2 hover:text-amber-900">free browser extension</a>
+              &mdash; no codebase changes needed, works on any website, even ones you don't own.
+            </div>
+          </div>
+          <h1 class="mb-8 text-gray-800 text-3xl font-bold">🧪 FillKit Raw HTML Test</h1>
+          <p class="mb-4 text-gray-600 text-lg">Testing FillKit SDK browser build with vanilla HTML forms</p>
+
+          <div class="bg-blue-50 p-6 rounded-lg border border-blue-300 mb-8">
+            <h3 class="mb-4 text-lg font-semibold text-blue-800">Test Instructions:</h3>
+            <ul class="list-disc pl-6 text-blue-900 space-y-2">
+              <li>This page uses the FillKit browser build (IIFE/UMD)</li>
+              <li>Open browser DevTools to see console logs</li>
+              <li>Use the FillKit widget (bottom center) to autofill forms</li>
+              <li>Test "Scan Page" to upload this page schema to cloud</li>
+            </ul>
+          </div>
+
+          <!-- Registration Form -->
+          <form id="registration-form" name="registration" action="/register" method="POST"
+            class="bg-white p-8 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">📝 User Registration Form</h2>
+
+            <div class="mb-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="reg-firstname" class="block text-sm font-medium text-gray-700 mb-2">First Name <span
+                      class="text-red-500">*</span></label>
+                  <input type="text" id="reg-firstname" name="firstName"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="John" required>
+                </div>
+                <div>
+                  <label for="reg-lastname" class="block text-sm font-medium text-gray-700 mb-2">Last Name <span
+                      class="text-red-500">*</span></label>
+                  <input type="text" id="reg-lastname" name="lastName"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Doe" required>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label for="reg-email" class="block text-sm font-medium text-gray-700 mb-2">Email Address <span
+                    class="text-red-500">*</span></label>
+                <input type="email" id="reg-email" name="email"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="john.doe@example.com" required>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="reg-phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                  <input type="tel" id="reg-phone" name="phone"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="+1 (555) 123-4567">
+                </div>
+                <div>
+                  <label for="reg-birthdate" class="block text-sm font-medium text-gray-700 mb-2">Date of Birth</label>
+                  <input type="date" id="reg-birthdate" name="birthDate"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label for="reg-password" class="block text-sm font-medium text-gray-700 mb-2">Password <span
+                    class="text-red-500">*</span></label>
+                <input type="password" id="reg-password" name="password"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Min 8 characters" required>
+              </div>
+
+              <div class="space-y-3 mb-6">
+                <label class="flex items-center">
+                  <input type="checkbox" name="newsletter" value="yes" class="mr-3 w-5 h-5">
+                  <span class="text-gray-700">Subscribe to newsletter</span>
+                </label>
+                <label class="flex items-center">
+                  <input type="checkbox" name="terms" value="accepted" required class="mr-3 w-5 h-5">
+                  <span class="text-gray-700">I accept the terms and conditions <span
+                      class="text-red-500">*</span></span>
+                </label>
+              </div>
+            </div>
+
+            <button type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg">Register
+              Account</button>
+          </form>
+
+          <!-- Contact Form -->
+          <form id="contact-form" name="contact" action="/contact" method="POST"
+            class="bg-white p-8 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">📧 Contact Information Form</h2>
+
+            <div class="mb-6">
+              <div class="mb-6">
+                <label for="contact-name" class="block text-sm font-medium text-gray-700 mb-2">Full Name <span
+                    class="text-red-500">*</span></label>
+                <input type="text" id="contact-name" name="fullName"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Your full name" required>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="contact-email" class="block text-sm font-medium text-gray-700 mb-2">Email <span
+                      class="text-red-500">*</span></label>
+                  <input type="email" id="contact-email" name="contactEmail"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="you@example.com" required>
+                </div>
+                <div>
+                  <label for="contact-phone" class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                  <input type="tel" id="contact-phone" name="contactPhone"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="(555) 987-6543">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="contact-company" class="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
+                  <input type="text" id="contact-company" name="company"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Acme Corp">
+                </div>
+                <div>
+                  <label for="contact-website" class="block text-sm font-medium text-gray-700 mb-2">Website</label>
+                  <input type="url" id="contact-website" name="website"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="https://example.com">
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label for="contact-subject" class="block text-sm font-medium text-gray-700 mb-2">Subject <span
+                    class="text-red-500">*</span></label>
+                <select id="contact-subject" name="subject"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  required>
+                  <option value="">-- Select a subject --</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="support">Technical Support</option>
+                  <option value="sales">Sales Question</option>
+                  <option value="feedback">Feedback</option>
+                </select>
+              </div>
+
+              <div class="mb-6">
+                <label for="contact-message" class="block text-sm font-medium text-gray-700 mb-2">Message <span
+                    class="text-red-500">*</span></label>
+                <textarea id="contact-message" name="message" rows="4"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Tell us how we can help..." required></textarea>
+              </div>
+
+              <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-3"><strong>Preferred Contact
+                    Method:</strong></label>
+                <div class="space-y-2">
+                  <label class="flex items-center">
+                    <input type="radio" name="contactMethod" value="email" checked class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">Email</span>
+                  </label>
+                  <label class="flex items-center">
+                    <input type="radio" name="contactMethod" value="phone" class="mr-3 w-5 h-5">
+                    <span class="text-gray-700">Phone</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg">Send
+              Message</button>
+          </form>
+
+          <!-- Shipping Form -->
+          <form id="shipping-form" name="shipping" action="/shipping" method="POST"
+            class="bg-white p-8 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">📦 Shipping Address Form</h2>
+
+            <div class="mb-6">
+              <div class="mb-6">
+                <label for="ship-address1" class="block text-sm font-medium text-gray-700 mb-2">Street Address <span
+                    class="text-red-500">*</span></label>
+                <input type="text" id="ship-address1" name="address1"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="123 Main Street" required>
+              </div>
+
+              <div class="mb-6">
+                <label for="ship-address2" class="block text-sm font-medium text-gray-700 mb-2">Apartment, Suite,
+                  etc.</label>
+                <input type="text" id="ship-address2" name="address2"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="Apt 4B">
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="ship-city" class="block text-sm font-medium text-gray-700 mb-2">City <span
+                      class="text-red-500">*</span></label>
+                  <input type="text" id="ship-city" name="city"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="San Francisco" required>
+                </div>
+                <div>
+                  <label for="ship-state" class="block text-sm font-medium text-gray-700 mb-2">State/Province <span
+                      class="text-red-500">*</span></label>
+                  <input type="text" id="ship-state" name="state"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="CA" required>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="ship-zip" class="block text-sm font-medium text-gray-700 mb-2">ZIP/Postal Code <span
+                      class="text-red-500">*</span></label>
+                  <input type="text" id="ship-zip" name="zipCode"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="94102" required>
+                </div>
+                <div>
+                  <label for="ship-country" class="block text-sm font-medium text-gray-700 mb-2">Country <span
+                      class="text-red-500">*</span></label>
+                  <select id="ship-country" name="country"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    required>
+                    <option value="">-- Select country --</option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="FR">France</option>
+                    <option value="DE">Germany</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg">Save
+              Shipping Address</button>
+          </form>
+
+          <!-- Payment Form -->
+          <form id="payment-form" name="payment" action="/payment" method="POST"
+            class="bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">💳 Payment Information Form</h2>
+
+            <div class="mb-6">
+              <div class="mb-6">
+                <label for="cc-name" class="block text-sm font-medium text-gray-700 mb-2">Cardholder Name <span
+                    class="text-red-500">*</span></label>
+                <input type="text" id="cc-name" name="cardholderName"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="John Doe" required>
+              </div>
+
+              <div class="mb-6">
+                <label for="cc-number" class="block text-sm font-medium text-gray-700 mb-2">Card Number <span
+                    class="text-red-500">*</span></label>
+                <input type="text" id="cc-number" name="cardNumber"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  placeholder="1234 5678 9012 3456" required>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label for="cc-exp" class="block text-sm font-medium text-gray-700 mb-2">Expiration Date <span
+                      class="text-red-500">*</span></label>
+                  <input type="text" id="cc-exp" name="expirationDate"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="MM/YY" required>
+                </div>
+                <div>
+                  <label for="cc-cvv" class="block text-sm font-medium text-gray-700 mb-2">CVV <span
+                      class="text-red-500">*</span></label>
+                  <input type="text" id="cc-cvv" name="cvv"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="123" required>
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <label class="flex items-center">
+                  <input type="checkbox" name="saveCard" value="yes" class="mr-3 w-5 h-5">
+                  <span class="text-gray-700">Save card for future purchases</span>
+                </label>
+              </div>
+            </div>
+
+            <button type="submit"
+              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors shadow-md hover:shadow-lg">Process
+              Payment</button>
+          </form>
+        </div>
+      </main>
+      </div>
+    </div>
+
+    <!-- Sidebar Toggle Script -->
+    <script type="module">
+      import {
+        ChevronLeft, ChevronRight, CircleCheck, Code, BookOpen, Heart, BarChart3
+      } from 'https://cdn.jsdelivr.net/npm/lucide@latest/+esm';
+
+      (async function () {
+        const saved = localStorage.getItem('fillkit-sidebar-collapsed');
+        let collapsed = saved ? JSON.parse(saved) : false;
+
+        // Create icon helper
+        function createIcon(IconComponent, container) {
+          container.innerHTML = '';
+          const icon = IconComponent({ class: 'w-5 h-5' });
+          container.appendChild(icon);
+        }
+
+        function updateSidebar(isCollapsed) {
+          const sidebar = document.getElementById('sidebar');
+          const title = document.getElementById('sidebar-title');
+          const toggleIcon = document.getElementById('toggle-icon');
+          const reactSectionTitle = document.getElementById('react-section-title');
+          const htmlSectionTitle = document.getElementById('html-section-title');
+          const reactLinkText = document.getElementById('react-link-text');
+          const reactLinkIcon = document.getElementById('react-link-icon');
+          const htmlTestLinkText = document.getElementById('html-test-link-text');
+          const htmlTestLinkIcon = document.getElementById('html-test-link-icon');
+          const philosophyLinkText = document.getElementById('philosophy-link-text');
+          const philosophyLinkIcon = document.getElementById('philosophy-link-icon');
+          const catechesisLinkText = document.getElementById('catechesis-link-text');
+          const catechesisLinkIcon = document.getElementById('catechesis-link-icon');
+          const saasLinkText = document.getElementById('saas-link-text');
+          const saasLinkIcon = document.getElementById('saas-link-icon');
+
+          if (isCollapsed) {
+            sidebar.classList.remove('w-64');
+            sidebar.classList.add('w-16');
+            title.style.display = 'none';
+            reactSectionTitle.style.display = 'none';
+            htmlSectionTitle.style.display = 'none';
+            createIcon(ChevronRight, toggleIcon);
+            reactLinkText.style.display = 'none';
+            reactLinkIcon.classList.remove('hidden');
+            createIcon(CircleCheck, reactLinkIcon);
+            htmlTestLinkText.style.display = 'none';
+            htmlTestLinkIcon.classList.remove('hidden');
+            createIcon(Code, htmlTestLinkIcon);
+            philosophyLinkText.style.display = 'none';
+            philosophyLinkIcon.classList.remove('hidden');
+            createIcon(BookOpen, philosophyLinkIcon);
+            catechesisLinkText.style.display = 'none';
+            catechesisLinkIcon.classList.remove('hidden');
+            createIcon(Heart, catechesisLinkIcon);
+            saasLinkText.style.display = 'none';
+            saasLinkIcon.classList.remove('hidden');
+            createIcon(BarChart3, saasLinkIcon);
+          } else {
+            sidebar.classList.remove('w-16');
+            sidebar.classList.add('w-64');
+            title.style.display = 'block';
+            reactSectionTitle.style.display = 'block';
+            htmlSectionTitle.style.display = 'block';
+            createIcon(ChevronLeft, toggleIcon);
+            reactLinkText.style.display = 'inline';
+            reactLinkIcon.classList.add('hidden');
+            htmlTestLinkText.style.display = 'inline';
+            htmlTestLinkIcon.classList.add('hidden');
+            philosophyLinkText.style.display = 'inline';
+            philosophyLinkIcon.classList.add('hidden');
+            catechesisLinkText.style.display = 'inline';
+            catechesisLinkIcon.classList.add('hidden');
+            saasLinkText.style.display = 'inline';
+            saasLinkIcon.classList.add('hidden');
+          }
+        }
+
+        // Initialize sidebar state
+        updateSidebar(collapsed);
+
+        // Toggle button
+        document.getElementById('sidebar-toggle').addEventListener('click', function () {
+          collapsed = !collapsed;
+          updateSidebar(collapsed);
+          localStorage.setItem('fillkit-sidebar-collapsed', JSON.stringify(collapsed));
+        });
+      })();
+    </script>
+
+    <!-- Load FillKit SDK from browser build -->
+    <script src="vendor/fillkit.umd.js"></script>
+
+    <script>
+      // Initialize FillKit with browser build
+      if (window.FillKit && window.FillKit.FillKit) {
+        window.FillKit.FillKit.init({
+          mode: 'valid',
+          watchMode: true,
+          refill: true,
+          ui: {
+            enabled: true,
+            position: 'bottom.center',
+            theme: {
+              primaryColor: '#3b82f6',
+              appearance: 'auto',
+            },
+          }
+        });
+      }
+
+      // Prevent actual form submissions
+      document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert(`Form "${form.name}" would submit. Check console for filled values.`);
+
+          // Log form data
+          const formData = new FormData(form);
+          const data = {};
+          for (const [key, value] of formData.entries()) {
+            data[key] = value;
+          }
+          console.log(`[Form ${form.name}] Data:`, data);
+        });
+      });
+    </script>
+  </body>
+
+</html>

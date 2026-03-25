@@ -1,0 +1,31 @@
+{
+  "name": "@fillkit/demo-react",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "FillKit React demo at demo.fillkit.dev/react",
+  "homepage": "https://demo.fillkit.dev/react",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fillkit/core": "1.0.2",
+    "lucide-react": "^0.554.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router": "^7.9.4"
+  },
+  "devDependencies": {
+    "@react-router/dev": "^7.9.4",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.1.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.1"
+  }
+}

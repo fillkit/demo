@@ -1,0 +1,22 @@
+{
+  "name": "@fillkit/demo-hub",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "FillKit multi-framework demo hub at demo.fillkit.dev",
+  "homepage": "https://demo.fillkit.dev",
+  "scripts": {
+    "postinstall": "node --input-type=module -e \"import{cpSync,mkdirSync}from'node:fs';mkdirSync('html/vendor',{recursive:true});cpSync('node_modules/@fillkit/browser/fillkit.umd.js','html/vendor/fillkit.umd.js');cpSync('node_modules/@fillkit/browser/fillkit.iife.js','html/vendor/fillkit.iife.js')\"",
+    "dev:react": "cd react && npx vite --port 5173",
+    "dev:vue": "cd vue && npx vite --port 5174",
+    "dev:angular": "cd angular && npx ng serve --port 4208",
+    "build:react": "cd react && npm run build",
+    "build:vue": "cd vue && npm run build",
+    "build:angular": "cd angular && npm run build",
+    "build": "npm run build:react && npm run build:vue && npm run build:angular && node scripts/build-dist.js",
+    "preview": "npx http-server dist -p 4005 -c-1 --gzip"
+  },
+  "dependencies": {
+    "@fillkit/browser": "1.0.2"
+  }
+}

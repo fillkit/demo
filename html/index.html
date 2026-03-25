@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FillKit HTML Demos - Raw HTML Form Examples</title>
+    <meta name="description" content="Raw HTML form demos showcasing FillKit's UMD browser build with vanilla HTML forms." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Top Nav -->
+    <header class="border-b border-gray-200 bg-white shrink-0 relative">
+      <div class="h-12 flex items-center justify-between px-4 max-w-screen-xl mx-auto">
+        <a href="/" class="flex items-center gap-2 shrink-0">
+          <img src="/assets/logo-rect.svg" alt="FillKit" class="h-6" />
+        </a>
+        <nav class="hidden sm:flex items-center gap-1">
+          <a href="/react/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">React</a>
+          <a href="/vue/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">Vue</a>
+          <a href="/angular/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">Angular</a>
+          <a href="/html/" class="px-3 py-1.5 text-sm rounded-md bg-gray-100 text-gray-900 font-medium transition-colors whitespace-nowrap">HTML</a>
+          <a href="/anywhere/" class="px-3 py-1.5 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors whitespace-nowrap">Extension</a>
+        </nav>
+        <button
+          class="sm:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          onclick="document.getElementById('mobile-nav').classList.toggle('hidden')"
+          aria-label="Toggle navigation"
+        >
+          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+      <div id="mobile-nav" class="hidden sm:hidden border-t border-gray-100 bg-white">
+        <nav class="flex flex-col py-2 px-4">
+          <a href="/react/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">React</a>
+          <a href="/vue/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">Vue</a>
+          <a href="/angular/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">Angular</a>
+          <a href="/html/" class="px-3 py-2 text-sm rounded-md bg-gray-100 text-gray-900 font-medium transition-colors">HTML</a>
+          <a href="/anywhere/" class="px-3 py-2 text-sm rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">Extension</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="flex-1">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 class="text-3xl font-bold text-gray-900 mb-2">Raw HTML Demos</h1>
+        <p class="text-lg text-gray-600 mb-8">
+          These demos use FillKit's UMD browser build with plain HTML forms &mdash; no framework, no build step.
+          Just include the script tag and call <code class="bg-gray-100 px-1.5 py-0.5 rounded text-sm">FillKit.init()</code>.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <a href="raw-html-test.html" class="block bg-white p-6 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-gray-50 transition-all">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">HTML Test</h3>
+            <p class="text-sm text-gray-600">Comprehensive form with 20+ field types covering personal info, addresses, accounts, and preferences.</p>
+          </a>
+
+          <a href="philosophy-exam.html" class="block bg-white p-6 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-gray-50 transition-all">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Philosophy Exam</h3>
+            <p class="text-sm text-gray-600">Academic exam form with essay questions, multiple choice, and student identification fields.</p>
+          </a>
+
+          <a href="catechesis-registration.html" class="block bg-white p-6 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-gray-50 transition-all">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Catechesis Registration</h3>
+            <p class="text-sm text-gray-600">Religious education enrollment with parent/guardian info, emergency contacts, and medical details.</p>
+          </a>
+
+          <a href="saas-survey.html" class="block bg-white p-6 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-gray-50 transition-all">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">SaaS Survey</h3>
+            <p class="text-sm text-gray-600">Product feedback survey with rating scales, dropdowns, textareas, and contact preferences.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
